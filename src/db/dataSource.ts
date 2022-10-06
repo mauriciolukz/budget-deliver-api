@@ -4,6 +4,12 @@ import { ConfigService } from '@nestjs/config';
 
 config();
 const configService = new ConfigService();
+const ssl =
+  process.env.NODE_ENV === 'prod'
+    ? {
+        rejectUnauthorized: false,
+      }
+    : null;
 
 const db: DataSourceOptions = {
   type: 'postgres',
@@ -12,5 +18,6 @@ const db: DataSourceOptions = {
   synchronize: true,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
   migrations: ['src/db/migrations/*.ts'],
+  ssl,
 };
 export const dataSource = new DataSource(db);

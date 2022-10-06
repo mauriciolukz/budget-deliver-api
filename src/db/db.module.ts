@@ -3,6 +3,12 @@ import { ConfigType } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import config from 'src/config';
+const ssl =
+  process.env.NODE_ENV === 'prod'
+    ? {
+        rejectUnauthorized: false,
+      }
+    : null;
 
 @Global()
 @Module({
@@ -25,9 +31,7 @@ import config from 'src/config';
           synchronize: false,
           autoLoadEntities: true,
           logging: true,
-          // ssl: {
-          //   rejectUnauthorized: false,
-          // },
+          ssl,
         };
       },
     }),
