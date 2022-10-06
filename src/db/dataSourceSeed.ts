@@ -5,7 +5,7 @@ import { ConfigService } from '@nestjs/config';
 config();
 const configService = new ConfigService();
 const ssl =
-  process.env.NODE_ENV === 'prod'
+  process.env.NODE_ENV === 'production'
     ? {
         rejectUnauthorized: false,
       }
