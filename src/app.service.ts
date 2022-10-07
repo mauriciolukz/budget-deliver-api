@@ -8,6 +8,6 @@ export class AppService {
     @Inject(config.KEY) private configService: ConfigType<typeof config>,
   ) {}
   getHello(): string {
-    return `Hello World!`;
+    return `Hello World! from docker`;
   }
 }

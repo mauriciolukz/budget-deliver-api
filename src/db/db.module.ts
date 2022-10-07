@@ -9,29 +9,18 @@ const ssl =
         rejectUnauthorized: false,
       }
     : null;
-
 @Global()
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
       inject: [config.KEY],
       useFactory: (configService: ConfigType<typeof config>) => {
-        // return {
-        //   type: 'mysql',
-        //   ...configService.mysql,
-        //   autoLoadEntities: true,
-        //   logging: true,
-        //   ssl: {
-        //     rejectUnauthorized: false,
-        //   },
-        // };
         return {
-          type: 'postgres',
-          url: configService.postgresUrl,
-          synchronize: false,
+          type: 'mssql',
+          ...configService.db_connection,
           autoLoadEntities: true,
           logging: true,
-          ssl,
+          synchronize: process.env.NODE_ENV === 'development',
         };
       },
     }),

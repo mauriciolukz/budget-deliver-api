@@ -30,17 +30,15 @@ export class User {
 
   @Exclude()
   @CreateDateColumn({
-    type: 'timestamp',
-    name: 'created_at',
-    default: () => 'CURRENT_TIMESTAMP(6)',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 
   @Exclude()
   @UpdateDateColumn({
-    type: 'timestamp',
-    name: 'updated_at',
-    default: () => 'CURRENT_TIMESTAMP(6)',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
 }

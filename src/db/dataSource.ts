@@ -12,12 +12,20 @@ const ssl =
     : null;
 
 const db: DataSourceOptions = {
-  type: 'postgres',
-  url: configService.get('DATABASE_URL'),
+  type: 'mssql',
+  database: configService.get('DB_NAME'),
+  host: configService.get('DB_HOST'),
+  port: parseInt(configService.get('DB_PORT'), 10),
+  username: configService.get('DB_USER'),
+  password: configService.get('DB_PASSWORD'),
+  options: { encrypt: false },
   logging: true,
   synchronize: true,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
   migrations: ['src/db/migrations/*.ts'],
-  ssl,
+
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // }
 };
 export const dataSource = new DataSource(db);

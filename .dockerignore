@@ -1,0 +1,9 @@
+# OS
+.DS_Store
+mysql_data
+postgres_data
+mssql-data
+
+
+/dist
+/node_modules

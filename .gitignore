@@ -14,7 +14,7 @@ lerna-debug.log*
 .DS_Store
 mysql_data
 postgres_data
-
+mssql-data
 # Tests
 /coverage
 /.nyc_output

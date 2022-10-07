@@ -10,7 +10,6 @@ import config from './config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -23,7 +22,11 @@ import { AuthModule } from './auth/auth.module';
         // MYSQL_PORT: Joi.number().required(),
         // MYSQL_ROOT_PASSWORD: Joi.string().required(),
         // MYSQL_HOST: Joi.string().required(),
-        DATABASE_URL: Joi.string().required(),
+        DB_HOST: Joi.string().required(),
+        DB_PORT: Joi.number().required(),
+        DB_USER: Joi.string().required(),
+        DB_PASSWORD: Joi.string().required(),
+        DB_NAME: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
       }),
     }),

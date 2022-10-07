@@ -36,7 +36,7 @@ export class createUsers1664991185295 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     queryRunner.query(
-      `DELETE FROM user WHERE username in ('admin','flota','taller','recibidor')`,
+      `DELETE FROM [user] WHERE username in ('admin','flota','taller','recibidor')`,
     );
   }
 }

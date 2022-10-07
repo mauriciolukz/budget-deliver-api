@@ -11,7 +11,7 @@ import {
 import { Exclude } from 'class-transformer';
 import { Role } from './role.entity';
 
-@Entity()
+@Entity({ name: 'appWindow' })
 export class AppWindow {
   @PrimaryGeneratedColumn()
   id: number;
@@ -24,21 +24,19 @@ export class AppWindow {
 
   @Exclude()
   @CreateDateColumn({
-    type: 'timestamp',
-    name: 'created_at',
-    default: () => 'CURRENT_TIMESTAMP(6)',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 
   @Exclude()
   @UpdateDateColumn({
-    type: 'timestamp',
-    name: 'updated_at',
-    default: () => 'CURRENT_TIMESTAMP(6)',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
 
   @ManyToMany(() => Role, (role) => role.appWindows)
-  @JoinTable({ name: 'role_app_window' })
+  @JoinTable({ name: 'roleAppWindow' })
   roles: Role[];
 }

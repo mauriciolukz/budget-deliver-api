@@ -1,0 +1,4 @@
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'BUDG')
+  BEGIN
+    CREATE DATABASE BUDG
+  END
