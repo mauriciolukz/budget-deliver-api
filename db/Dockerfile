@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 
 # Set environment variables, not to have to write them with docker run command
 # Note: make sure that your password matches what is in the run-initialization script
-ENV MSSQL_SA_PASSWORD My$tr0ng@password
+ENV MSSQL_SA_PASSWORD MyStr0ng@password
 ENV ACCEPT_EULA Y
 ENV MSSQL_PID Express
 

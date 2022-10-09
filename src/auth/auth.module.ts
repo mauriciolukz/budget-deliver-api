@@ -16,12 +16,6 @@ import config from 'src/config';
   imports: [
     UsersModule,
     PassportModule,
-    // JwtModule.register({
-    //   secret: 'cats',
-    //   signOptions: {
-    //     expiresIn: '10d',
-    //   },
-    // }),
     JwtModule.registerAsync({
       inject: [config.KEY],
       useFactory: (configService: ConfigType<typeof config>) => {
