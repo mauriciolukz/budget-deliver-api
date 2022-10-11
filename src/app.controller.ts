@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 
 import { Public } from './auth/decorators/public.decorators';
 
-@Controller()
+@Controller('api')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 

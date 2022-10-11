@@ -1,10 +1,15 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 
 import { UsersService } from 'src/users/services/users.service';
 import { User } from 'src/users/entities/user.entity';
 import { IToken } from '../models/token.model';
+import { RoleType } from 'src/users/types/roleType';
 
 @Injectable()
 export class AuthService {
@@ -23,13 +28,15 @@ export class AuthService {
     return null;
   }
 
-  async generateJWT(user: User) {
+  async generateJWT(user: User, platform: RoleType) {
     const payload: IToken = { role: user.role, sub: user.id };
     const role = await this.userService.findRol(payload.role);
+    if (role.roleType !== platform)
+      throw new ForbiddenException('Usuario no tiene acceso a esta plataforma');
     return {
       token: this.jwtService.sign(payload),
       user,
-      role,
+      role: role.roleType === RoleType.web ? null : role,
     };
   }
 }

@@ -2,7 +2,7 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 import { dataSource } from '../dataSourceSeed';
 import { AppWindow } from 'src/users/entities/appWindow.entity';
 import { Role } from 'src/users/entities/role.entity';
-import { InjectRepository } from '@nestjs/typeorm';
+import { RoleType } from 'src/users/types/roleType';
 
 export class seedRolesAndPermissions1664977014249
   implements MigrationInterface
@@ -12,10 +12,6 @@ export class seedRolesAndPermissions1664977014249
     const alquiler = await appWindowRepo.save({
       name: 'renting',
       caption: 'Alquiler del vehículo',
-    });
-    const entregaDomicilio = await appWindowRepo.save({
-      name: 'delivery',
-      caption: 'Entrega a domicilio',
     });
     const traslado = await appWindowRepo.save({
       name: 'transferring',
@@ -29,51 +25,45 @@ export class seedRolesAndPermissions1664977014249
     const roleRepo = dataSource.getRepository(Role);
     const admin = await roleRepo.save({
       name: 'admin',
-      roleType: 'app',
+      roleType: RoleType.app,
     });
     const informatica = await roleRepo.save({
       name: 'informatica',
-      roleType: 'app',
+      roleType: RoleType.app,
     });
     const operaciones = await roleRepo.save({
       name: 'operaciones',
-      roleType: 'app',
+      roleType: RoleType.app,
     });
-    const flota = await roleRepo.save({ name: 'flota', roleType: 'app' });
-    const taller = await roleRepo.save({ name: 'taller', roleType: 'app' });
+    const flota = await roleRepo.save({
+      name: 'flota',
+      roleType: RoleType.app,
+    });
+    const taller = await roleRepo.save({
+      name: 'taller',
+      roleType: RoleType.app,
+    });
     const recibidor = await roleRepo.save({
       name: 'recibidor',
-      roleType: 'app',
+      roleType: RoleType.app,
     });
     const ejecutivo = await roleRepo.save({
       name: 'ejecutivo',
-      roleType: 'app',
+      roleType: RoleType.app,
     });
-    const hicker = await roleRepo.save({ name: 'hicker', roleType: 'app' });
+    const hicker = await roleRepo.save({
+      name: 'hicker',
+      roleType: RoleType.app,
+    });
 
-    informatica.appWindows = [
-      alquiler,
-      traslado,
-      usoNoProductivo,
-      entregaDomicilio,
-    ];
-    operaciones.appWindows = [
-      alquiler,
-      traslado,
-      usoNoProductivo,
-      entregaDomicilio,
-    ];
+    informatica.appWindows = [alquiler, traslado, usoNoProductivo];
+    operaciones.appWindows = [alquiler, traslado, usoNoProductivo];
     flota.appWindows = [alquiler, traslado, usoNoProductivo];
     taller.appWindows = [traslado, usoNoProductivo];
     recibidor.appWindows = [traslado, usoNoProductivo];
-    ejecutivo.appWindows = [
-      alquiler,
-      traslado,
-      usoNoProductivo,
-      entregaDomicilio,
-    ];
+    ejecutivo.appWindows = [alquiler, traslado, usoNoProductivo];
     hicker.appWindows = [alquiler, traslado, usoNoProductivo];
-    admin.appWindows = [alquiler, traslado, usoNoProductivo, entregaDomicilio];
+    admin.appWindows = [alquiler, traslado, usoNoProductivo];
 
     await roleRepo.save(informatica);
     await roleRepo.save(operaciones);

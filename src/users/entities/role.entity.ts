@@ -20,8 +20,8 @@ export class Role {
   @Column({ type: 'varchar', length: 20, unique: true })
   name: string;
 
-  @Column({ type: 'varchar', length: 20 })
-  roleType: string;
+  @Column({ type: 'varchar', length: 3 })
+  roleType: RoleType;
 
   @Exclude()
   @CreateDateColumn({
