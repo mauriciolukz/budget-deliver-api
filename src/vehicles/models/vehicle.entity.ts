@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   OneToOne,
   JoinColumn,
+  Index,
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
@@ -16,6 +17,7 @@ export class Vehicle {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Index('mva-idx')
   @Column({ type: 'varchar', length: 30 })
   MVA: string;
 
