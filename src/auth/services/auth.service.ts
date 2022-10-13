@@ -22,21 +22,23 @@ export class AuthService {
     const user = await this.userService.findByUsername(username);
     if (!user) throw new NotFoundException('Usuario no encontrado');
     const isMatch = await bcrypt.compare(password, user.password);
-    if (isMatch) {
-      return user;
-    }
-    return null;
+    if (!isMatch) return null;
+
+    return user;
   }
 
   async generateJWT(user: User, platform: RoleType) {
     const payload: IToken = { role: user.role, sub: user.id };
-    const role = await this.userService.findRol(payload.role);
-    if (role.roleType !== platform)
+    if (payload.role === '')
+      throw new ForbiddenException('Usuario no tiene rol asignado');
+    const role = await this.userService.findRol(user.role, platform);
+    if (!role)
       throw new ForbiddenException('Usuario no tiene acceso a esta plataforma');
+    const token = this.jwtService.sign(payload);
     return {
-      token: this.jwtService.sign(payload),
+      token,
       user,
-      role: role.roleType === RoleType.web ? null : role,
+      role,
     };
   }
 }

@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToMany,
-  JoinTable,
+  Unique,
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
@@ -13,11 +13,12 @@ import { AppWindow } from './appWindow.entity';
 import { RoleType } from '../types/roleType';
 
 @Entity()
+@Unique(['name', 'roleType'])
 export class Role {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 20, unique: true })
+  @Column({ type: 'varchar', length: 20 })
   name: string;
 
   @Column({ type: 'varchar', length: 3 })

@@ -25,7 +25,6 @@ import { RolesGuard } from 'src/auth/guards/roles.guard';
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
-  @Public()
   @Get()
   findAll() {
     return this.usersService.findAll();

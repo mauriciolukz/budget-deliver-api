@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 import { User } from '../entities/user.entity';
 import { Role } from '../entities/role.entity';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
+import { RoleType } from '../types/roleType';
 
 @Injectable()
 export class UsersService {
@@ -41,10 +42,10 @@ export class UsersService {
     return this.usersRepo.delete(id);
   }
 
-  findRol(name: string) {
+  findRol(name: string, roleType: RoleType) {
     return this.roleRepo.findOne({
-      where: { name },
-      relations: { appWindows: true },
+      where: { name, roleType },
+      relations: { appWindows: roleType === RoleType.app },
     });
   }
 }

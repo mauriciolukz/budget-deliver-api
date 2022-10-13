@@ -1,4 +1,12 @@
-import { Controller, Body, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Body,
+  Post,
+  Req,
+  UseGuards,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -11,6 +19,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
   @UseGuards(AuthGuard('local'))
   @Post('auth')
+  @HttpCode(HttpStatus.OK)
   login(@Body() data: LoginDto, @Req() req: Request) {
     const user = req.user as User;
     return this.authService.generateJWT(user, data.platform);

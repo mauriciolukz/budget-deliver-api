@@ -27,6 +27,10 @@ export class seedRolesAndPermissions1664977014249
       name: 'admin',
       roleType: RoleType.app,
     });
+    const adminWeb = await roleRepo.save({
+      name: 'admin',
+      roleType: RoleType.web,
+    });
     const informatica = await roleRepo.save({
       name: 'informatica',
       roleType: RoleType.app,
@@ -73,6 +77,7 @@ export class seedRolesAndPermissions1664977014249
     await roleRepo.save(ejecutivo);
     await roleRepo.save(hicker);
     await roleRepo.save(admin);
+    await roleRepo.save(adminWeb);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

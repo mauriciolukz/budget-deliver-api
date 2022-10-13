@@ -9,6 +9,7 @@ import { DbModule } from './db/db.module';
 import config from './config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { VehiclesModule } from './vehicles/vehicles.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     DbModule,
     AuthModule,
+    VehiclesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
