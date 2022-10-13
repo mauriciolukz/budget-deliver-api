@@ -3,7 +3,7 @@ import { dataSource } from '../dataSourceSeed';
 import { Vehicle } from 'src/vehicles/models/vehicle.entity';
 
 export class seedVehicles1665626379642 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
+  public async up(): Promise<void> {
     const vehiclesRepo = dataSource.getRepository(Vehicle);
     await vehiclesRepo.insert([
       {
@@ -49,5 +49,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
     ]);
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(): Promise<void> {
+    //
+  }
 }

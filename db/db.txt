@@ -1,0 +1,5 @@
+Eliminar la carpeta mssql-data que está en el proyecto
+docker-compose stop
+docker rm $(docker ps -aq)
+docker-compose up -d --build
+./db/run-migrations.sh
