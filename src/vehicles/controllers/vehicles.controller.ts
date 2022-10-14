@@ -29,9 +29,14 @@ export class VehiclesController {
     return this.vehiclesService.findAll(params);
   }
 
+  @Get(':id')
+  get(@Param('id', ParseIntPipe) id: number) {
+    return this.vehiclesService.findById(id);
+  }
+
   @Post('getByMVA')
   getByMVA(@Body() data: FilterMVADto) {
-    return this.vehiclesService.findOneByMVA(data.MVA);
+    return this.vehiclesService.findByMVA(data.MVA);
   }
 
   @Post()

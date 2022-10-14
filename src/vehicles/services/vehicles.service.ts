@@ -16,16 +16,20 @@ export class VehiclesService {
 
   async findAll(params: FilterVehiclesDto) {
     const { limit = null, offset = null } = params;
-    return this.vehicleRepo.find({
+    const records = await this.vehicleRepo.count();
+    const vehicles = await this.vehicleRepo.find({
       take: limit,
       skip: offset,
     });
+    return { records, vehicles };
   }
 
-  async findOneByMVA(MVA: string) {
-    return this.vehicleRepo.findOne({
-      where: { MVA },
-    });
+  findById(id: number) {
+    return this.vehicleRepo.findOneBy({ id });
+  }
+
+  findByMVA(MVA: string) {
+    return this.vehicleRepo.findOneBy({ MVA });
   }
 
   create(data: CreateVehicleDto) {

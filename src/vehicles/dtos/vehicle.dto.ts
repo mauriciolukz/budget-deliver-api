@@ -76,7 +76,6 @@ export class FilterVehiclesDto {
   limit: number;
 
   @IsOptional()
-  @IsPositive()
   @Min(0)
   @ApiProperty()
   offset: number;
