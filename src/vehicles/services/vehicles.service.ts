@@ -15,9 +15,8 @@ export class VehiclesService {
   ) {}
 
   async findAll(params: FilterVehiclesDto) {
-    const { limit = null, offset = null } = params;
-    const records = await this.vehicleRepo.count();
-    const vehicles = await this.vehicleRepo.find({
+    const { limit, offset } = params;
+    const [vehicles, records] = await this.vehicleRepo.findAndCount({
       take: limit,
       skip: offset,
     });

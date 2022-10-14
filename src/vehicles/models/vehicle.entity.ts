@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
-import { GasLevel } from '../types/gasLevel';
+import { FuelLevel } from '../types/fuelLevel';
 
 @Entity()
 export class Vehicle {
@@ -40,7 +40,7 @@ export class Vehicle {
   currentKm: number;
 
   @Column({ type: 'varchar', length: 3, default: '' })
-  gasLevel: GasLevel;
+  fuelLevel: FuelLevel;
 
   @Column({ type: 'varchar', length: 255, default: '' })
   remark: string;

@@ -10,7 +10,7 @@ import {
   IsEnum,
 } from 'class-validator';
 import { ApiProperty, OmitType } from '@nestjs/swagger';
-import { GasLevel } from '../types/gasLevel';
+import { FuelLevel } from '../types/fuelLevel';
 
 export class CreateVehicleDto {
   @IsString()
@@ -39,8 +39,8 @@ export class CreateVehicleDto {
   readonly currentKm: number;
   @ApiProperty()
   @IsOptional()
-  @IsEnum(GasLevel, { message: 'Nivel de gasolina no válido' })
-  readonly gasLevel: GasLevel;
+  @IsEnum(FuelLevel, { message: 'Nivel de gasolina no válido' })
+  readonly fuelLevel: FuelLevel;
   @ApiProperty()
   @IsOptional()
   @MaxLength(255, {
@@ -73,12 +73,12 @@ export class FilterVehiclesDto {
   @IsPositive()
   @Min(1)
   @ApiProperty()
-  limit: number;
+  limit: number | null;
 
   @IsOptional()
   @Min(0)
   @ApiProperty()
-  offset: number;
+  offset: number | null;
 }
 
 export class FilterMVADto {
