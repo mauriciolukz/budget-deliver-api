@@ -1,10 +1,12 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 import { dataSource } from '../dataSourceSeed';
 import { Vehicle } from 'src/vehicles/models/vehicle.entity';
+import { FuelLevel } from 'src/vehicles/types/fuel-level';
 
 export class seedVehicles1665626379642 implements MigrationInterface {
-  public async up(): Promise<void> {
+  public async up(queryRunner: QueryRunner): Promise<void> {
     const vehiclesRepo = dataSource.getRepository(Vehicle);
+    vehiclesRepo.clear();
     await vehiclesRepo.insert([
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -13,6 +15,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'Blanco',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
+        isAvailable: false,
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -29,6 +32,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'Blanco',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
+        isAvailable: false,
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -37,6 +41,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'Blanco',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
+        fuelLevel: FuelLevel['5/8'],
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -45,6 +50,35 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'Blanco',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
+      },
+      {
+        MVA: `${Math.floor(Math.random() * 3000000)}`,
+        make: 'Nissan',
+        model: 'Sentra',
+        color: 'rojo vino',
+        plateNum: `M-${Math.floor(Math.random() * 9000)}`,
+        keyNum: `${Math.floor(Math.random() * 30000)}`,
+        fuelLevel: FuelLevel['7/8'],
+      },
+      {
+        MVA: `${Math.floor(Math.random() * 3000000)}`,
+        make: 'BMW',
+        model: 'X6',
+        color: 'negro',
+        plateNum: `M-${Math.floor(Math.random() * 9000)}`,
+        keyNum: `${Math.floor(Math.random() * 30000)}`,
+        isAvailable: false,
+        fuelLevel: FuelLevel['1/8'],
+      },
+      {
+        MVA: `${Math.floor(Math.random() * 3000000)}`,
+        make: 'Kia',
+        model: 'rio',
+        color: 'negro',
+        plateNum: `M-${Math.floor(Math.random() * 9000)}`,
+        keyNum: `${Math.floor(Math.random() * 30000)}`,
+        isAvailable: false,
+        fuelLevel: FuelLevel['3/8'],
       },
     ]);
   }

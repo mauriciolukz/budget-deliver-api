@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
-import { FuelLevel } from '../types/fuelLevel';
+import { FuelLevel } from '../types/fuel-level';
 
 @Entity()
 export class Vehicle {

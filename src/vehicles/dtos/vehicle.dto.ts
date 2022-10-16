@@ -10,19 +10,19 @@ import {
   IsEnum,
 } from 'class-validator';
 import { ApiProperty, OmitType } from '@nestjs/swagger';
-import { FuelLevel } from '../types/fuelLevel';
+import { FuelLevel } from '../types/fuel-level';
 
 export class CreateVehicleDto {
   @IsString()
   @ApiProperty()
-  @IsNotEmpty({ message: `Campo MVA obligatorio` })
+  @IsNotEmpty({ message: `MVA no puede estar vacío` })
   readonly MVA: string;
   @IsString()
   @ApiProperty()
-  @IsNotEmpty({ message: 'Campo Marca obligatorio' })
+  @IsNotEmpty({ message: 'Marca no puede estar vacío' })
   readonly make: string;
   @ApiProperty()
-  @IsNotEmpty({ message: 'Campo Modelo obligatorio' })
+  @IsNotEmpty({ message: 'Modelo no puede estar vacío' })
   readonly model: string;
   @IsString()
   @ApiProperty()
@@ -73,12 +73,12 @@ export class FilterVehiclesDto {
   @IsPositive()
   @Min(1)
   @ApiProperty()
-  limit: number | null;
+  limit?: number | null;
 
   @IsOptional()
   @Min(0)
   @ApiProperty()
-  offset: number | null;
+  offset?: number | null;
 }
 
 export class FilterMVADto {

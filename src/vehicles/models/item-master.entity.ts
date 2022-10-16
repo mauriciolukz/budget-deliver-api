@@ -4,21 +4,23 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  Index,
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
-import { Verbose } from '../types/verbose';
+import { ItemType } from '../types/item-type';
 
 @Entity()
-export class Services {
+export class ItemMaster {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 50, unique: true })
-  serviceName: string;
+  @Index('desc-idx')
+  @Column({ type: 'varchar', length: 100 })
+  description: string;
 
-  @Column({ type: 'varchar', length: 3 })
-  verbose: Verbose;
+  @Column({ type: 'smallint' })
+  itemType: ItemType;
 
   @Exclude()
   @CreateDateColumn({

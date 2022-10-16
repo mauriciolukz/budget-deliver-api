@@ -17,8 +17,6 @@ import {
   UpdateUserDto,
   FilterUsernameDto,
 } from '../dtos/user.dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { Public } from '../../auth/decorators/public.decorators';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 
 @UseGuards(AuthGuard('jwt'), RolesGuard)
@@ -29,11 +27,6 @@ export class UsersController {
   findAll() {
     return this.usersService.findAll();
   }
-
-  // @Get(':id')
-  // get(@Param('id', ParseIntPipe) id: number) {
-  //   return this.usersService.findOne(id);
-  // }
 
   @Post()
   create(@Body() payload: CreateUserDto) {
