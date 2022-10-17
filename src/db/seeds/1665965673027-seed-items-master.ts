@@ -12,108 +12,108 @@ export class seedItemsMaster1665965673027 implements MigrationInterface {
     await itemsMasterRepo.save([
       {
         description: 'Antena',
-        itemType: ItemType.accessory,
+        itemType: ItemType.Accesorios,
       },
       {
         description: 'Llanta de repuesto',
-        itemType: ItemType.accessory,
+        itemType: ItemType.Accesorios,
       },
       {
         description: 'Radio',
-        itemType: ItemType.accessory,
+        itemType: ItemType.Accesorios,
       },
       {
         description: 'Cámara',
-        itemType: ItemType.accessory,
+        itemType: ItemType.Accesorios,
       },
       {
         description: 'Herramientas',
-        itemType: ItemType.accessory,
+        itemType: ItemType.Accesorios,
       },
       {
         description: 'Triángulo',
-        itemType: ItemType.accessory,
+        itemType: ItemType.Accesorios,
       },
       {
         description: 'Extinguidor',
-        itemType: ItemType.accessory,
+        itemType: ItemType.Accesorios,
       },
       {
         description: 'Rodamiento del año',
-        itemType: ItemType.document,
+        itemType: ItemType.Documentos,
       },
       {
         description: 'Circulación',
-        itemType: ItemType.document,
+        itemType: ItemType.Documentos,
       },
       {
         description: 'Seguro',
-        itemType: ItemType.document,
+        itemType: ItemType.Documentos,
       },
       {
         description: 'Emisión de gases',
-        itemType: ItemType.document,
+        itemType: ItemType.Documentos,
       },
       {
         description: 'Inspección Mecánica',
-        itemType: ItemType.document,
+        itemType: ItemType.Documentos,
       },
       {
         description: 'Rack',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Alfombras',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Loderas',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Llave',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Forros',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Pide vías',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Cañuelas',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Cepillos tricos',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Llavines',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Retrovisor interno',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Tapón de combustible',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Tapones del motor',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Emblema',
-        itemType: ItemType.part,
+        itemType: ItemType.Partes,
         useQty: true,
       },
       {
         description: 'Placas',
-        itemType: ItemType.document,
+        itemType: ItemType.Documentos,
         useQty: true,
       },
     ]);

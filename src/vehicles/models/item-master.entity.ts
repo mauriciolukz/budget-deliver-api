@@ -9,9 +9,8 @@ import {
   OneToMany,
 } from 'typeorm';
 
-import { Exclude } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { ItemType } from '../types/item-type';
-import { VehicleItem } from './vehicle-item.entity';
 
 @Entity({ name: 'itemMaster' })
 export class ItemMaster {
@@ -41,4 +40,9 @@ export class ItemMaster {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @Expose()
+  get itemTypeDesc() {
+    return ItemType[this.itemType];
+  }
 }
