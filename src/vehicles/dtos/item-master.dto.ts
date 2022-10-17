@@ -5,9 +5,12 @@ import {
   IsEnum,
   IsOptional,
   Min,
+  IsNumber,
+  IsBoolean,
 } from 'class-validator';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { ItemType } from '../types/item-type';
+import { Exclude } from 'class-transformer';
 
 export class CreateItemMasterDto {
   @IsString()
@@ -17,9 +20,21 @@ export class CreateItemMasterDto {
 
   @IsEnum(ItemType)
   @IsPositive()
+  @IsNumber()
   @ApiProperty()
   @IsNotEmpty({ message: 'Tipo de item no puede estar vacío' })
   readonly itemType: ItemType;
+
+  @IsBoolean()
+  @IsOptional()
+  @ApiProperty()
+  readonly useQty: boolean;
+
+  @Exclude()
+  readonly createdAt: Date;
+
+  @Exclude()
+  readonly updatedAt: Date;
 }
 
 export class UpdateItemMasterDto extends PartialType(CreateItemMasterDto) {}

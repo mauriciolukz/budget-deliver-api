@@ -11,6 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { CreateVehicleItemsDto } from '../dtos/vehicle-item.dto';
 import {
   CreateVehicleDto,
   FilterMVADto,

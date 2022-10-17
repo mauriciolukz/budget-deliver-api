@@ -1,5 +1,5 @@
 export enum ItemType {
-  'part',
-  'accessory',
-  'document',
+  'part' = 1,
+  'accessory' = 2,
+  'document' = 3,
 }

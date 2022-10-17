@@ -5,28 +5,20 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Index,
+  ManyToMany,
   ManyToOne,
-  OneToMany,
+  Unique,
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
-import { ItemType } from '../types/item-type';
-import { VehicleItem } from './vehicle-item.entity';
+import { Vehicle } from './vehicle.entity';
+import { ItemMaster } from './item-master.entity';
 
-@Entity({ name: 'itemMaster' })
-export class ItemMaster {
+@Entity({ name: 'vehicleItem' })
+@Unique('vehicleId-itemId', ['vehicle', 'item'])
+export class VehicleItem {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Index('desc-idx')
-  @Column({ type: 'varchar', length: 100, unique: true })
-  description: string;
-
-  @Column({ type: 'smallint' })
-  itemType: ItemType;
-
-  @Column({ type: 'bit', default: false })
-  useQty: boolean;
 
   @Exclude()
   @CreateDateColumn({
@@ -41,4 +33,13 @@ export class ItemMaster {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @ManyToOne(() => Vehicle, (Vehicle) => Vehicle.items)
+  vehicle: Vehicle;
+
+  @ManyToOne(() => ItemMaster)
+  item: ItemMaster;
+
+  @Column({ type: 'smallint', default: 0 })
+  quantity: number;
 }

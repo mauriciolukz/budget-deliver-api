@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import {
@@ -27,13 +31,17 @@ export class ItemsMasterService {
     return this.itemMasterRepo.findOneBy({ id });
   }
 
-  create(data: CreateItemMasterDto) {
+  async create(data: CreateItemMasterDto) {
+    const item = await this.itemMasterRepo.count({
+      where: { description: data.description },
+    });
+    if (item !== 0) throw new ConflictException('Registro ya existe');
     return this.itemMasterRepo.save(data);
   }
 
   async update(id: number, payload: UpdateItemMasterDto) {
     const item = await this.itemMasterRepo.findOneBy({ id });
-    if (!item) throw new NotFoundException('Registro no encontrado');
+    if (!item) throw new NotFoundException();
     this.itemMasterRepo.merge(item, payload);
     return this.itemMasterRepo.save(item);
   }

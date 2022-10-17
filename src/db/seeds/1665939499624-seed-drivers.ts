@@ -5,6 +5,7 @@ import { dataSource } from '../dataSourceSeed';
 export class seedDrivers1665939499624 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     const driversRepo = dataSource.getRepository(Driver);
+    await driversRepo.clear()
     await driversRepo.insert([
       {
         firstName: 'José',

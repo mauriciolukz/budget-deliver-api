@@ -2,11 +2,14 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 import { dataSource } from '../dataSourceSeed';
 import { Vehicle } from 'src/vehicles/models/vehicle.entity';
 import { FuelLevel } from 'src/vehicles/types/fuel-level';
+import { VehicleItem } from 'src/vehicles/models/vehicle-item.entity';
 
 export class seedVehicles1665626379642 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
+  public async up(): Promise<void> {
     const vehiclesRepo = dataSource.getRepository(Vehicle);
-    vehiclesRepo.clear();
+    const vehicleItemsRepo = dataSource.getRepository(VehicleItem);
+    const vehicleItems = await vehicleItemsRepo.find();
+    await vehicleItemsRepo.remove(vehicleItems);
     await vehiclesRepo.insert([
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -83,7 +86,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
     ]);
   }
 
-  public async down(): Promise<void> {
-    //
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('TRUNCATE TABLE vehicle');
   }
 }

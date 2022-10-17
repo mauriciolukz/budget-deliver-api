@@ -28,7 +28,10 @@ export class VehiclesService {
   }
 
   findByMVA(MVA: string) {
-    return this.vehicleRepo.findOneBy({ MVA });
+    return this.vehicleRepo.findOne({
+      where: { MVA },
+      relations: { items: { item: true } },
+    });
   }
 
   create(data: CreateVehicleDto) {

@@ -7,10 +7,13 @@ import {
   OneToOne,
   JoinColumn,
   Index,
+  OneToMany,
 } from 'typeorm';
 
-import { Exclude } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { FuelLevel } from '../types/fuel-level';
+import { VehicleItem } from './vehicle-item.entity';
+import { ItemType } from '../types/item-type';
 
 @Entity()
 export class Vehicle {
@@ -73,4 +76,21 @@ export class Vehicle {
     default: () => 'CURRENT_TIMESTAMP',
   })
   updatedAt: Date;
+
+  @Exclude()
+  @OneToMany(() => VehicleItem, (vehicleItem) => vehicleItem.vehicle)
+  items: VehicleItem[];
+
+  @Expose()
+  get _items() {
+    if (this.items) {
+      return this.items.map((item) => ({
+        description: item.item.description,
+        itemType: ItemType[item.item.itemType],
+        quantity: item.quantity,
+        useQty: item.item.useQty,
+      }));
+    }
+    return [];
+  }
 }
