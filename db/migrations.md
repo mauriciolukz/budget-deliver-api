@@ -13,3 +13,12 @@
 
 > ./db/run-migrations.sh
 ```
+
+curl -X 'POST' \
+  'http://localhost:3000/api/vehicles/1/accesories' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJzdWIiOjEsImlhdCI6MTY2NTk2NDAwM30.FQBsLOSLD_f1fgEXX4IXr71LBCtOId7W41J9i1F9ids' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "items": [[29,2,4], [31,2]]
+}'

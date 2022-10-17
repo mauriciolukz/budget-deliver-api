@@ -17,46 +17,56 @@ export class CreateVehicleDto {
   @ApiProperty()
   @IsNotEmpty({ message: `MVA no puede estar vacío` })
   readonly MVA: string;
+
   @IsString()
   @ApiProperty()
   @IsNotEmpty({ message: 'Marca no puede estar vacío' })
   readonly make: string;
+
   @ApiProperty()
   @IsNotEmpty({ message: 'Modelo no puede estar vacío' })
   readonly model: string;
+
   @IsString()
-  @ApiProperty()
+  @ApiProperty({ required: false, default: '' })
   readonly color: string;
+
   @IsString()
-  @ApiProperty()
+  @ApiProperty({ required: false, default: '' })
   readonly plateNum: string;
+
   @IsString()
-  @ApiProperty()
+  @ApiProperty({ required: false, default: '' })
   keyNum: string;
-  @ApiProperty()
-  @IsOptional()
+
+  @ApiProperty({ required: false, default: 0 })
   @IsNumber({}, { message: 'Kilometraje actual debe ser número' })
   readonly currentKm: number;
-  @ApiProperty()
+
+  @ApiProperty({ required: false, default: '' })
   @IsOptional()
   @IsEnum(FuelLevel, { message: 'Nivel de gasolina no válido' })
   readonly fuelLevel: FuelLevel;
-  @ApiProperty()
+
+  @ApiProperty({ required: false, default: '' })
   @IsOptional()
   @MaxLength(255, {
     message: 'Campo observaciones no puede exceder los 255 caracteres',
   })
   readonly remark: string;
+
   @IsDate({ message: 'Fecha del ultimo cambio de aceite no válido' })
-  @ApiProperty()
+  @ApiProperty({ required: false, default: null })
   @IsOptional()
   readonly lastOilChangeDate: Date;
+
   @IsDate({ message: 'Fecha de próximo cambio de aceite no válido' })
-  @ApiProperty()
+  @ApiProperty({ required: false, default: null })
   @IsOptional()
   readonly nextOilChangeDate: Date;
+
   @IsDate({ message: 'Km próximo cambio de aceite no válido' })
-  @ApiProperty()
+  @ApiProperty({ required: false, default: null })
   @IsOptional()
   readonly nextOilChangeKm: number;
 }
@@ -72,13 +82,13 @@ export class FilterVehiclesDto {
   @IsOptional()
   @IsPositive()
   @Min(1)
-  @ApiProperty()
-  limit?: number | null;
+  @ApiProperty({ required: false })
+  limit: number;
 
   @IsOptional()
   @Min(0)
-  @ApiProperty()
-  offset?: number | null;
+  @ApiProperty({ required: false })
+  offset: number;
 }
 
 export class FilterMVADto {

@@ -21,20 +21,16 @@ export class CreateItemMasterDto {
   @IsEnum(ItemType)
   @IsPositive()
   @IsNumber()
-  @ApiProperty()
+  @ApiProperty({
+    enum: [ItemType.Partes, ItemType.Accesorios, ItemType.Documentos],
+  })
   @IsNotEmpty({ message: 'Tipo de item no puede estar vacío' })
   readonly itemType: ItemType;
 
   @IsBoolean()
   @IsOptional()
-  @ApiProperty()
+  @ApiProperty({ default: false, required: false })
   readonly useQty: boolean;
-
-  @Exclude()
-  readonly createdAt: Date;
-
-  @Exclude()
-  readonly updatedAt: Date;
 }
 
 export class UpdateItemMasterDto extends PartialType(CreateItemMasterDto) {}

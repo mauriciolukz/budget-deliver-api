@@ -14,8 +14,7 @@ export class VehiclesService {
     @InjectRepository(Vehicle) private vehicleRepo: Repository<Vehicle>,
   ) {}
 
-  async findAll(params: FilterVehiclesDto) {
-    const { limit, offset } = params;
+  async findAll({ limit, offset }: FilterVehiclesDto) {
     const [vehicles, records] = await this.vehicleRepo.findAndCount({
       take: limit,
       skip: offset,

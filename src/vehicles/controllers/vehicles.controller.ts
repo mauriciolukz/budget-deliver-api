@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   ParseIntPipe,
   Post,
@@ -11,7 +13,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { CreateVehicleItemsDto } from '../dtos/vehicle-item.dto';
 import {
   CreateVehicleDto,
   FilterMVADto,
@@ -35,6 +36,7 @@ export class VehiclesController {
     return this.vehiclesService.findById(id);
   }
 
+  @HttpCode(HttpStatus.OK)
   @Post('getByMVA')
   getByMVA(@Body() data: FilterMVADto) {
     return this.vehiclesService.findByMVA(data.MVA);
