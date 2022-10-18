@@ -3,7 +3,10 @@ import { UnprocessableEntityException } from '@nestjs/common';
 export const imageFileFilter = (req, file, callback) => {
   if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
     return callback(
-      new UnprocessableEntityException('Only image files are allowed!'),
+      new UnprocessableEntityException(
+        file.originalname,
+        'Sólo archivos jpg | jpeg | png son permitidos',
+      ),
     );
   }
   callback(null, true);

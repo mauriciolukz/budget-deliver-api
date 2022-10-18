@@ -3,19 +3,12 @@ import {
   Param,
   ParseIntPipe,
   Post,
-  UploadedFile,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
-import {
-  FileFieldsInterceptor,
-  FileInterceptor,
-} from '@nestjs/platform-express';
-import { Express } from 'express';
+import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editFileName, imageFileFilter } from '../helpers/file-name';
-import { FileSizeValidationPipe } from '../pipes/file-size-validation-pipe';
-import { FileTypeValidationPipe } from '../pipes/file-type-validation-pipe';
 import { VehiclePhotosService } from '../services/vehicle-photos.service';
 import { Photos } from '../types/photos';
 

@@ -14,7 +14,7 @@ export class VehiclePhotosService {
     //
   }
 
-  async create(id: number, files: Array<Express.Multer.File>) {
+  async create(id: number, files: Express.Multer.File[]) {
     const vehicle = await this.vehicleRepo.findOneBy({ id });
     if (!vehicle) throw new NotFoundException();
     const photos = new Array<VehiclePhoto>();
@@ -29,7 +29,6 @@ export class VehiclePhotosService {
         photos.push(photo);
       }
     }
-    await this.vehiclePhotoRepo.save(photos);
-    return photos;
+    return this.vehiclePhotoRepo.save(photos);
   }
 }
