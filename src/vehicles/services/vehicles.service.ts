@@ -29,7 +29,7 @@ export class VehiclesService {
   findByMVA(MVA: string) {
     return this.vehicleRepo.findOne({
       where: { MVA },
-      relations: { items: { item: true } },
+      relations: { items: { item: true }, photos: true },
     });
   }
 

@@ -18,6 +18,7 @@ mssql-data
 # Tests
 /coverage
 /.nyc_output
+uploads
 
 # IDEs and editors
 /.idea

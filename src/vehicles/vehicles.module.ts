@@ -9,14 +9,25 @@ import { ItemMaster } from './models/item-master.entity';
 import { VehicleItemsController } from './controllers/vehicle-items.controller';
 import { VehicleItemsService } from './services/vehicle-items.service';
 import { VehicleItem } from './models/vehicle-item.entity';
+import { VehiclePhotosController } from './controllers/vehicle-photos.controller';
+import { VehiclePhotosService } from './services/vehicle-photos.service';
+import { VehiclePhoto } from './models/vehicle-photo.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Vehicle, ItemMaster, VehicleItem])],
-  providers: [VehiclesService, ItemsMasterService, VehicleItemsService],
+  imports: [
+    TypeOrmModule.forFeature([Vehicle, ItemMaster, VehicleItem, VehiclePhoto]),
+  ],
+  providers: [
+    VehiclesService,
+    ItemsMasterService,
+    VehicleItemsService,
+    VehiclePhotosService,
+  ],
   controllers: [
     VehiclesController,
     ItemsMasterController,
     VehicleItemsController,
+    VehiclePhotosController,
   ],
 })
 export class VehiclesModule {}

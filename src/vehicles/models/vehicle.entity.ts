@@ -4,7 +4,6 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToOne,
   JoinColumn,
   Index,
   OneToMany,
@@ -14,6 +13,7 @@ import { Exclude, Expose } from 'class-transformer';
 import { FuelLevel } from '../types/fuel-level';
 import { VehicleItem } from './vehicle-item.entity';
 import { ItemType } from '../types/item-type';
+import { VehiclePhoto } from './vehicle-photo.entity';
 
 @Entity()
 export class Vehicle {
@@ -80,6 +80,10 @@ export class Vehicle {
   @Exclude()
   @OneToMany(() => VehicleItem, (vehicleItem) => vehicleItem.vehicle)
   items: VehicleItem[];
+
+  @OneToMany(() => VehiclePhoto, (vehiclePhoto) => vehiclePhoto.vehicle)
+  @JoinColumn()
+  photos: VehiclePhoto[];
 
   @Expose()
   get _items() {

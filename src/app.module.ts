@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import * as Joi from 'joi';
 
 import { AppController } from './app.controller';
@@ -19,17 +21,19 @@ import { VehiclesModule } from './vehicles/vehicles.module';
       isGlobal: true,
       // Validar variables de entorno requeridas para iniciar el servidor
       validationSchema: Joi.object({
-        // MYSQL_DATABASE: Joi.string().required(),
-        // MYSQL_PORT: Joi.number().required(),
-        // MYSQL_ROOT_PASSWORD: Joi.string().required(),
-        // MYSQL_HOST: Joi.string().required(),
         DB_HOST: Joi.string().required(),
         DB_PORT: Joi.number().required(),
         DB_USER: Joi.string().required(),
         DB_PASSWORD: Joi.string().required(),
         DB_NAME: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
+        UPLOAD_URL: Joi.string().required(),
       }),
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'), // added ../ to get one folder back
+      serveRoot: '/uploads/', //last slash was important
+      exclude: ['/api*'],
     }),
     UsersModule,
     DbModule,

@@ -5,8 +5,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Index,
-  ManyToOne,
-  OneToMany,
 } from 'typeorm';
 
 import { Exclude, Expose } from 'class-transformer';
