@@ -12,6 +12,7 @@ import { VehicleItem } from './models/vehicle-item.entity';
 import { VehiclePhotosController } from './controllers/vehicle-photos.controller';
 import { VehiclePhotosService } from './services/vehicle-photos.service';
 import { VehiclePhoto } from './models/vehicle-photo.entity';
+import { FuelLevelsController } from './controllers/fuel-levels.controller';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { VehiclePhoto } from './models/vehicle-photo.entity';
     ItemsMasterController,
     VehicleItemsController,
     VehiclePhotosController,
+    FuelLevelsController,
   ],
 })
 export class VehiclesModule {}
