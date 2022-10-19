@@ -14,7 +14,7 @@ import { CreateLocationDto, UpdateLocationDto } from '../dtos/location.dto';
 import { LocationsService } from '../services/locations.service';
 
 @UseGuards(AuthGuard('jwt'))
-@Controller('locations')
+@Controller('api/locations')
 export class LocationsController {
   constructor(private locationsService: LocationsService) {}
   @Get()
