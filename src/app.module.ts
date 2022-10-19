@@ -12,6 +12,7 @@ import config from './config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
+import { LocationsModule } from './locations/locations.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { VehiclesModule } from './vehicles/vehicles.module';
     DbModule,
     AuthModule,
     VehiclesModule,
+    LocationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
