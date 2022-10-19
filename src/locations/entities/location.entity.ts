@@ -15,7 +15,7 @@ export class Location {
 
   @IsNotEmpty({ message: 'Campo nombre obligatorio' })
   @Column({ type: 'varchar', length: 60 })
-  locationCode: string;
+  locationName: string;
 
   @Column({ type: 'varchar', length: 255, default: '' })
   address: string;

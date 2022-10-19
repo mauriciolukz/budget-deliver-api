@@ -5,7 +5,7 @@ export class CreateLocationDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({ maxLength: 60 })
-  readonly locationCode: string;
+  readonly locationName: string;
 
   @IsString()
   @ApiProperty({ maxLength: 255, required: false })
