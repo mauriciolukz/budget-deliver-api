@@ -28,7 +28,11 @@ export class AuthService {
   }
 
   async generateJWT(user: User, platform: RoleType) {
-    const payload: IToken = { role: user.role, sub: user.id };
+    const payload: IToken = {
+      username: user.username,
+      role: user.role,
+      sub: user.id,
+    };
     if (payload.role === '')
       throw new ForbiddenException('Usuario no tiene rol asignado');
     const role = await this.userService.findRol(user.role, platform);

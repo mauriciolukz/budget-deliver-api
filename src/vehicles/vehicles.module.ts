@@ -31,5 +31,6 @@ import { FuelLevelsController } from './controllers/fuel-levels.controller';
     VehiclePhotosController,
     FuelLevelsController,
   ],
+  exports: [VehiclesService, TypeOrmModule],
 })
 export class VehiclesModule {}

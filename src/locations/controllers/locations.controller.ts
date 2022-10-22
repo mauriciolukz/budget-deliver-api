@@ -23,7 +23,7 @@ export class LocationsController {
   }
 
   @Get(':id')
-  find(@Param('id', ParseIntPipe) id: number,) {
+  find(@Param('id', ParseIntPipe) id: number) {
     return this.locationsService.findOne(id);
   }
 

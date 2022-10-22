@@ -28,4 +28,5 @@ const db: DataSourceOptions = {
   //   rejectUnauthorized: false,
   // }
 };
+
 export const dataSource = new DataSource(db);
