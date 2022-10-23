@@ -1,8 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 import { dataSource } from '../dataSourceSeed';
-import { Vehicle } from 'src/vehicles/models/vehicle.entity';
+import { Vehicle } from 'src/vehicles/entities/vehicle.entity';
 import { FuelLevel } from 'src/vehicles/types/fuel-level';
-import { VehicleItem } from 'src/vehicles/models/vehicle-item.entity';
+import { VehicleItem } from 'src/vehicles/entities/vehicle-item.entity';
 
 export class seedVehicles1665626379642 implements MigrationInterface {
   public async up(): Promise<void> {

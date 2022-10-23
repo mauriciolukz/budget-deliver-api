@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DocumntsTypeService } from './document-types.service';
+import { DocumntsTypeService } from './trx-config.service';
 
 describe('DocumntsTypeService', () => {
   let service: DocumntsTypeService;

@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { FuelLevel } from '../types/fuel-level';
 
 @Entity({ name: 'openTransaction' })
 export class OpenTransaction {
@@ -15,11 +16,15 @@ export class OpenTransaction {
 
   @IsNotEmpty({ message: 'Campo Tipo documento obligatorio' })
   @Column({ type: 'smallint' })
-  documentType: number;
+  trxType: number;
+
+  @IsNotEmpty({ message: 'Campo Abreviatura obligatorio' })
+  @Column({ type: 'varchar', length: 10 })
+  abrev: string;
 
   @IsNotEmpty({ message: 'Campo Núm. de documento obligatorio' })
   @Column({ type: 'varchar', length: 15 })
-  documentNumber: string;
+  trxNumber: string;
 
   @IsNotEmpty({ message: 'Campo Id. de vehículo obligatorio' })
   @Column({ type: 'smallint' })
@@ -36,6 +41,12 @@ export class OpenTransaction {
   @IsNotEmpty({ message: 'Campo Color obligatorio' })
   @Column({ type: 'varchar', length: 30 })
   color: string;
+
+  @Column({ type: 'integer' })
+  km: number;
+
+  @Column({ type: 'varchar', length: 3, default: '' })
+  fuelLevel: FuelLevel;
 
   @IsNotEmpty({ message: 'Campo locación obligatorio' })
   @Column({ type: 'varchar', length: 60 })

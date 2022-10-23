@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 import { PartialType, ApiProperty } from '@nestjs/swagger';
 
-export class CreateDocumentConfigDto {
+export class CreateTransactionConfigDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({ maxLength: 10 })
@@ -12,6 +12,6 @@ export class CreateDocumentConfigDto {
   readonly nextNumber: string;
 }
 
-export class UpdateDocumentConfigDto extends PartialType(
-  CreateDocumentConfigDto,
+export class UpdateTransactionConfigDto extends PartialType(
+  CreateTransactionConfigDto,
 ) {}

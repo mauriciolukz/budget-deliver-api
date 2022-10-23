@@ -7,13 +7,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'documentConfig' })
-export class DocumentConfig {
+@Entity({ name: 'transactionConfig' })
+export class TransactionConfig {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: 'smallint' })
-  documentType: number;
+  trxType: number;
 
   @Column({ type: 'varchar', length: 10 })
   abrev: string;

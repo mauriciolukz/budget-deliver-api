@@ -1,21 +1,21 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UpdateDocumentConfigDto } from '../dtos/document-config.dto';
-import { DocumentConfig } from '../entities/document-config.entity';
+import { UpdateTransactionConfigDto } from '../dtos/trx-config.dto';
+import { TransactionConfig } from '../entities/trx-config.entity';
 
 @Injectable()
-export class DocumentConfigsService {
+export class TransactionConfigsService {
   constructor(
-    @InjectRepository(DocumentConfig)
-    private documentConfigsRepo: Repository<DocumentConfig>,
+    @InjectRepository(TransactionConfig)
+    private documentConfigsRepo: Repository<TransactionConfig>,
   ) {}
 
-  getByType(documentType: number) {
-    return this.documentConfigsRepo.findOneBy({ documentType });
+  getByType(trxType: number) {
+    return this.documentConfigsRepo.findOneBy({ trxType });
   }
 
-  async update(id: number, changes: UpdateDocumentConfigDto) {
+  async update(id: number, changes: UpdateTransactionConfigDto) {
     const document = await this.documentConfigsRepo.findOneBy({ id });
     if (!document) throw new NotFoundException();
     const merge = await this.documentConfigsRepo.merge(document, changes);

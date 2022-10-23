@@ -6,7 +6,7 @@ import {
   FilterVehiclesDto,
   UpdateVehicleDto,
 } from '../dtos/vehicle.dto';
-import { Vehicle } from '../models/vehicle.entity';
+import { Vehicle } from '../entities/vehicle.entity';
 
 @Injectable()
 export class VehiclesService {

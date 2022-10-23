@@ -3,9 +3,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { dataSource } from '../../db/dataSource';
 import { CreateVehicleItemsDto } from '../dtos/vehicle-item.dto';
-import { ItemMaster } from '../models/item-master.entity';
-import { VehicleItem } from '../models/vehicle-item.entity';
-import { Vehicle } from '../models/vehicle.entity';
+import { ItemMaster } from '../entities/item-master.entity';
+import { VehicleItem } from '../entities/vehicle-item.entity';
+import { Vehicle } from '../entities/vehicle.entity';
 import { IVehicleItem } from '../types/vehicle-item';
 
 @Injectable()

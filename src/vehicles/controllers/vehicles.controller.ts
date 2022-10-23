@@ -20,11 +20,15 @@ import {
   UpdateVehicleDto,
 } from '../dtos/vehicle.dto';
 import { VehiclesService } from '../services/vehicles.service';
+import { OpenTransactionsService } from '../services/open-transactions.service';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('api/vehicles')
 export class VehiclesController {
-  constructor(private vehiclesService: VehiclesService) {}
+  constructor(
+    private vehiclesService: VehiclesService,
+    private openTrxsService: OpenTransactionsService,
+  ) {}
 
   @Get()
   getAll(@Query() params: FilterVehiclesDto) {
@@ -57,5 +61,10 @@ export class VehiclesController {
   @Delete(':id')
   delete(@Param('id', ParseIntPipe) id: number) {
     return this.vehiclesService.delete(id);
+  }
+
+  @Get(':vehicleId/open-transaction')
+  getByVehicleId(@Param('vehicleId', ParseIntPipe) vehicleId: number) {
+    return this.openTrxsService.findByVehicleId(vehicleId);
   }
 }

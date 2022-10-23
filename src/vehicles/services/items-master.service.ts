@@ -10,7 +10,7 @@ import {
   FilterItemsMasterDto,
   UpdateItemMasterDto,
 } from '../dtos/item-master.dto';
-import { ItemMaster } from '../models/item-master.entity';
+import { ItemMaster } from '../entities/item-master.entity';
 
 @Injectable()
 export class ItemsMasterService {

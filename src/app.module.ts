@@ -13,7 +13,6 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
 import { LocationsModule } from './locations/locations.module';
-import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -42,7 +41,6 @@ import { TransactionsModule } from './transactions/transactions.module';
     AuthModule,
     VehiclesModule,
     LocationsModule,
-    TransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

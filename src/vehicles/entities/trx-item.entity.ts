@@ -15,14 +15,14 @@ export class TransactionItem {
 
   @IsNotEmpty({ message: 'Campo Tipo documento obligatorio' })
   @Column({ type: 'smallint' })
-  documentType: number;
+  trxType: number;
 
   @IsNotEmpty({ message: 'Campo Núm. de documento obligatorio' })
   @Column({ type: 'varchar', length: 15 })
-  documentNumber: string;
+  trxNumber: string;
 
-  @Column({ type: 'varchar', length: 100 })
-  itemDescription: string;
+  @Column({ type: 'smallint' })
+  itemId: number;
 
   @Column({ type: 'smallint' })
   quantity: number;

@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
-import { ItemMaster } from 'src/vehicles/models/item-master.entity';
+import { ItemMaster } from 'src/vehicles/entities/item-master.entity';
 import { ItemType } from 'src/vehicles/types/item-type';
 import { dataSource } from '../dataSourceSeed';
 
