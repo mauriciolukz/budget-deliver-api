@@ -17,6 +17,7 @@ import { OpenTransaction } from './entities/open-trx.entity';
 import { TransactionConfig } from './entities/trx-config.entity';
 import { OpenTransactionsService } from './services/open-transactions.service';
 import { TransactionsController } from './controllers/transactions.controller';
+import { TrxWheel } from './entities/trx-wheel.entity';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { TransactionsController } from './controllers/transactions.controller';
       VehiclePhoto,
       OpenTransaction,
       TransactionConfig,
+      TrxWheel,
     ]),
   ],
   providers: [

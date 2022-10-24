@@ -5,10 +5,14 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  Unique,
   UpdateDateColumn,
 } from 'typeorm';
-import { FuelLevel } from '../types/fuel-level';
+import { FuelLevel } from '../enums/fuel-level';
+import { TrxCheck } from '../enums/trx-check';
 
+@Unique(['trxType', 'trxNumber'])
+@Unique(['vehicleId', 'check'])
 @Entity({ name: 'openTransaction' })
 export class OpenTransaction {
   @PrimaryGeneratedColumn()
@@ -54,6 +58,10 @@ export class OpenTransaction {
 
   @Column({ type: 'varchar', length: 30 })
   username: string;
+
+  @IsNotEmpty({ message: 'Campo Revisión obligatorio' })
+  @Column({ type: 'varchar', length: 3 })
+  check: TrxCheck;
 
   @Exclude()
   @CreateDateColumn({

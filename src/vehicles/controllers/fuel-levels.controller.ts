@@ -1,6 +1,6 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { FuelLevel } from '../types/fuel-level';
+import { FuelLevel } from '../enums/fuel-level';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('api/fuel-levels')

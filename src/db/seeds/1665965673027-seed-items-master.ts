@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 import { ItemMaster } from 'src/vehicles/entities/item-master.entity';
-import { ItemType } from 'src/vehicles/types/item-type';
+import { ItemType } from 'src/vehicles/enums/item-type';
 import { dataSource } from '../dataSourceSeed';
 
 export class seedItemsMaster1665965673027 implements MigrationInterface {
@@ -121,6 +121,6 @@ export class seedItemsMaster1665965673027 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     const itemsMasterRepo = dataSource.getRepository(ItemMaster);
-    await itemsMasterRepo.clear()
+    await itemsMasterRepo.clear();
   }
 }

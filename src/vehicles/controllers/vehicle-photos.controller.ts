@@ -10,7 +10,7 @@ import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editFileName, imageFileFilter } from '../helpers/file-name';
 import { VehiclePhotosService } from '../services/vehicle-photos.service';
-import { Photos } from '../types/photos';
+import { Photos } from '../enums/photos';
 
 @Controller('api/vehicles')
 export class VehiclePhotosController {

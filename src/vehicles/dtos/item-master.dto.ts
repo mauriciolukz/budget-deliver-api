@@ -9,8 +9,7 @@ import {
   IsBoolean,
 } from 'class-validator';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { ItemType } from '../types/item-type';
-import { Exclude } from 'class-transformer';
+import { ItemType } from '../enums/item-type';
 
 export class CreateItemMasterDto {
   @IsString()

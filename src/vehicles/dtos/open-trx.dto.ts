@@ -1,6 +1,7 @@
-import { IsEnum, IsNumber, Min } from 'class-validator';
-import { PartialType, ApiProperty } from '@nestjs/swagger';
-import { FuelLevel } from '../types/fuel-level';
+import { IsEnum, IsNumber, IsString, Min } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { FuelLevel } from '../enums/fuel-level';
+import { TrxCheck } from '../enums/trx-check';
 
 export class CreateTransactionDto {
   @Min(1)
@@ -10,6 +11,10 @@ export class CreateTransactionDto {
   @Min(1)
   @ApiProperty()
   readonly vehicleId: number;
+
+  @IsEnum(TrxCheck, { message: 'Revisión no válido' })
+  @ApiProperty({ enum: TrxCheck })
+  readonly check: TrxCheck;
 }
 
 export class UpdateTransactionDto {

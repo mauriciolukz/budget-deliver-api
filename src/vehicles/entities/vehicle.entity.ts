@@ -10,9 +10,9 @@ import {
 } from 'typeorm';
 
 import { Exclude, Expose } from 'class-transformer';
-import { FuelLevel } from '../types/fuel-level';
+import { FuelLevel } from '../enums/fuel-level';
 import { VehicleItem } from './vehicle-item.entity';
-import { ItemType } from '../types/item-type';
+import { ItemType } from '../enums/item-type';
 import { VehiclePhoto } from './vehicle-photo.entity';
 
 @Entity()

@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 import { Exclude, Expose } from 'class-transformer';
-import { ItemType } from '../types/item-type';
+import { ItemType } from '../enums/item-type';
 
 @Entity({ name: 'itemMaster' })
 export class ItemMaster {

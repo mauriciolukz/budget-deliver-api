@@ -7,6 +7,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { TrxCheck } from '../enums/trx-check';
 
 @Entity({ name: 'transactionItem' })
 export class TransactionItem {
@@ -26,6 +27,9 @@ export class TransactionItem {
 
   @Column({ type: 'smallint' })
   quantity: number;
+
+  @Column({ type: 'varchar', length: 3 })
+  check: TrxCheck;
 
   @Exclude()
   @CreateDateColumn({

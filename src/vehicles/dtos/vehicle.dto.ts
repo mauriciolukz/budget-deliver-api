@@ -10,7 +10,7 @@ import {
   IsEnum,
 } from 'class-validator';
 import { ApiProperty, OmitType } from '@nestjs/swagger';
-import { FuelLevel } from '../types/fuel-level';
+import { FuelLevel } from '../enums/fuel-level';
 
 export class CreateVehicleDto {
   @IsString()
@@ -43,7 +43,7 @@ export class CreateVehicleDto {
   @IsNumber({}, { message: 'Kilometraje actual debe ser número' })
   readonly currentKm: number;
 
-  @ApiProperty({ required: false, default: '' })
+  @ApiProperty({ enum: FuelLevel, required: false, default: '' })
   @IsOptional()
   @IsEnum(FuelLevel, { message: 'Nivel de gasolina no válido' })
   readonly fuelLevel: FuelLevel;
