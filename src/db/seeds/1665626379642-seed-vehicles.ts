@@ -18,7 +18,8 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'Blanco',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
-        isAvailable: false,
+        isAvailable: true,
+        location: 'Managua Downtown',
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -27,6 +28,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'Blanco',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
+        location: 'Managua Downtown',
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -35,7 +37,8 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'Blanco',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
-        isAvailable: false,
+        isAvailable: true,
+        location: 'Managua Downtown',
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -45,6 +48,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
         fuelLevel: FuelLevel['5/8'],
+        location: 'Managua Downtown',
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -53,6 +57,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'Blanco',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
+        location: 'Managua Downtown',
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -62,6 +67,7 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
         fuelLevel: FuelLevel['7/8'],
+        location: 'Managua Downtown',
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -70,8 +76,9 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'negro',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
-        isAvailable: false,
+        isAvailable: true,
         fuelLevel: FuelLevel['1/8'],
+        location: 'Managua Downtown',
       },
       {
         MVA: `${Math.floor(Math.random() * 3000000)}`,
@@ -80,8 +87,9 @@ export class seedVehicles1665626379642 implements MigrationInterface {
         color: 'negro',
         plateNum: `M-${Math.floor(Math.random() * 9000)}`,
         keyNum: `${Math.floor(Math.random() * 30000)}`,
-        isAvailable: false,
+        isAvailable: true,
         fuelLevel: FuelLevel['3/8'],
+        location: 'Managua Downtown',
       },
     ]);
   }

@@ -47,14 +47,20 @@ export class OpenTransaction {
   color: string;
 
   @Column({ type: 'integer' })
-  km: number;
+  currentKm: number;
+
+  @Column({ type: 'integer' })
+  trxKm: number;
 
   @Column({ type: 'varchar', length: 3, default: '' })
   fuelLevel: FuelLevel;
 
   @IsNotEmpty({ message: 'Campo locación obligatorio' })
   @Column({ type: 'varchar', length: 60 })
-  locationName: string;
+  trxLocation: string;
+
+  @Column({ type: 'varchar', length: 60, default: '' })
+  toLocation: string;
 
   @Column({ type: 'varchar', length: 30 })
   username: string;
@@ -63,7 +69,6 @@ export class OpenTransaction {
   @Column({ type: 'varchar', length: 3 })
   check: TrxCheck;
 
-  @Exclude()
   @CreateDateColumn({
     type: 'datetime',
     default: () => 'CURRENT_TIMESTAMP',

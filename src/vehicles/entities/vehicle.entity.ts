@@ -63,6 +63,12 @@ export class Vehicle {
   @Column({ type: 'bit', default: true })
   isAvailable: boolean;
 
+  @Column({ type: 'varchar', length: 15, default: '' })
+  lastTrxNumber: string;
+
+  @Column({ type: 'varchar', length: 10, default: '' })
+  lastTrxAbrev: string;
+
   @Exclude()
   @CreateDateColumn({
     type: 'datetime',

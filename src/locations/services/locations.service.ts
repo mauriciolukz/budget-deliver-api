@@ -17,6 +17,10 @@ export class LocationsService {
     return this.locationsRepo.findOneBy({ id });
   }
 
+  findOneByName(locationName: string) {
+    return this.locationsRepo.findOneBy({ locationName });
+  }
+
   async create(data: CreateLocationDto) {
     return this.locationsRepo.save(data);
   }

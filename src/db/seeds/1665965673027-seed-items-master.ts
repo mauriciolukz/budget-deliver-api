@@ -11,36 +11,109 @@ export class seedItemsMaster1665965673027 implements MigrationInterface {
 
     await itemsMasterRepo.save([
       {
-        description: 'Antena',
+        description: 'Triángulos',
         itemType: ItemType.Accesorios,
+      },
+      {
+        description: 'Gata',
+        itemType: ItemType.Accesorios,
+      },
+      {
+        description: 'Manerales',
+        itemType: ItemType.Accesorios,
+      },
+      {
+        description: 'Extintor',
+        itemType: ItemType.Accesorios,
+      },
+      {
+        description: 'Alfombras',
+        itemType: ItemType.Accesorios,
+      },
+      {
+        description: 'Forros de asiento',
+        itemType: ItemType.Accesorios,
+      },
+      {
+        description: 'Rach',
+        itemType: ItemType.Accesorios,
+      },
+      {
+        description: 'Llave',
+        itemType: ItemType.Accesorios,
+      },
+      {
+        description: 'Antena',
+        itemType: ItemType.Partes,
       },
       {
         description: 'Llanta de repuesto',
-        itemType: ItemType.Accesorios,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Radio',
-        itemType: ItemType.Accesorios,
+        itemType: ItemType.Partes,
       },
       {
         description: 'Cámara',
-        itemType: ItemType.Accesorios,
+        itemType: ItemType.Partes,
       },
       {
-        description: 'Herramientas',
-        itemType: ItemType.Accesorios,
+        description: 'A/C',
+        itemType: ItemType.Partes,
       },
       {
-        description: 'Triángulo',
-        itemType: ItemType.Accesorios,
+        description: 'Sensores',
+        itemType: ItemType.Partes,
       },
       {
-        description: 'Extinguidor',
-        itemType: ItemType.Accesorios,
+        description: 'Retrovisor interno',
+        itemType: ItemType.Partes,
       },
       {
-        description: 'Rodamiento del año',
-        itemType: ItemType.Documentos,
+        description: 'Cañuelas',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Emblemas',
+        itemType: ItemType.Partes,
+        useQty: true,
+      },
+      {
+        description: 'Llavines',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Pide vias',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Focos',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Stops',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Loderas',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Retrovisores laterales',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Cepillos tricos',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Tapón combustible',
+        itemType: ItemType.Partes,
+      },
+      {
+        description: 'Tapones motor',
+        itemType: ItemType.Partes,
       },
       {
         description: 'Circulación',
@@ -48,6 +121,10 @@ export class seedItemsMaster1665965673027 implements MigrationInterface {
       },
       {
         description: 'Seguro',
+        itemType: ItemType.Documentos,
+      },
+      {
+        description: 'Rodamiento',
         itemType: ItemType.Documentos,
       },
       {
@@ -59,62 +136,29 @@ export class seedItemsMaster1665965673027 implements MigrationInterface {
         itemType: ItemType.Documentos,
       },
       {
-        description: 'Rack',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Alfombras',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Loderas',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Llave',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Forros',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Pide vías',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Cañuelas',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Cepillos tricos',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Llavines',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Retrovisor interno',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Tapón de combustible',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Tapones del motor',
-        itemType: ItemType.Partes,
-      },
-      {
-        description: 'Emblema',
-        itemType: ItemType.Partes,
-        useQty: true,
-      },
-      {
         description: 'Placas',
         itemType: ItemType.Documentos,
         useQty: true,
+      },
+      {
+        description: 'Sticher no fumado',
+        itemType: ItemType.Documentos,
+      },
+      {
+        description: 'Sticker MVA',
+        itemType: ItemType.Documentos,
+      },
+      {
+        description: 'Sticker matricula',
+        itemType: ItemType.Documentos,
+      },
+      {
+        description: 'Sticker emisión gases',
+        itemType: ItemType.Documentos,
+      },
+      {
+        description: 'Sticker cambio de aceite',
+        itemType: ItemType.Documentos,
       },
     ]);
   }

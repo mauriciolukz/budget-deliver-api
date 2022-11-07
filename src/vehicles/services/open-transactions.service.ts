@@ -18,6 +18,8 @@ import { TransactionConfig } from '../entities/trx-config.entity';
 import { TrxWheel } from '../entities/trx-wheel.entity';
 import { CreateTrxWheelDto } from '../dtos/trx-wheel.dto';
 import { TrxCheck } from '../enums/trx-check';
+import { LocationsService } from 'src/locations/services/locations.service';
+import { TrxType } from '../enums/trx-type';
 
 @Injectable()
 export class OpenTransactionsService {
@@ -26,6 +28,7 @@ export class OpenTransactionsService {
     @InjectRepository(OpenTransaction)
     private openTransRepo: Repository<OpenTransaction>,
     @InjectRepository(TrxWheel) private wheel: Repository<TrxWheel>,
+    private locationsService: LocationsService,
   ) {}
 
   find(id: number) {
@@ -37,18 +40,16 @@ export class OpenTransactionsService {
   }
 
   async create(
-    { vehicleId, trxType, check }: CreateTransactionDto,
+    { vehicleId, trxType, check, toLocation }: CreateTransactionDto,
     username: string,
   ) {
     const openTrx = await this.openTransRepo.findOneBy({ id: vehicleId });
-
     return this.dataSource.transaction<OpenTransaction>(
       'SERIALIZABLE',
       async (manager) => {
         const vehicle = await manager.findOneBy(Vehicle, { id: vehicleId });
         if (!vehicle)
           throw new NotFoundException('Registo de vehículo no encontrado');
-
         if (!vehicle.isAvailable && check === TrxCheck.Out)
           throw new ConflictException(
             `El vehículo ${vehicle.MVA} no está disponible`,
@@ -61,6 +62,23 @@ export class OpenTransactionsService {
           throw new ConflictException(
             `El vehículo ${vehicle.MVA} no puede ingresarse con este tipo de documento`,
           );
+        if (vehicle.location.length === 0)
+          throw new UnprocessableEntityException(
+            'Vehiculo no tiene locación definida',
+          );
+
+        if (trxType == TrxType.transferencia) {
+          if (toLocation === vehicle.location)
+            throw new ConflictException(
+              'Locación destino no puede ser la misma de origen',
+            );
+          const location = await this.locationsService.findOneByName(
+            toLocation,
+          );
+
+          if (!location)
+            throw new NotFoundException(`No se encontró locación destino`);
+        }
 
         const trxConfig = await manager.findOneBy(TransactionConfig, {
           trxType,
@@ -75,12 +93,14 @@ export class OpenTransactionsService {
           make: vehicle.make,
           model: vehicle.model,
           color: vehicle.color,
-          km: vehicle.currentKm,
+          currentKm: vehicle.currentKm,
+          trxKm: vehicle.currentKm,
           fuelLevel: vehicle.fuelLevel,
           trxType: trxConfig.trxType,
           abrev: trxConfig.abrev,
           trxNumber: trxConfig.nextNumber,
-          locationName: vehicle.location,
+          trxLocation: vehicle.location,
+          toLocation,
           check,
           username,
         });
@@ -90,6 +110,8 @@ export class OpenTransactionsService {
         });
         const ct2 = await manager.update(Vehicle, vehicle.id, {
           isAvailable: false,
+          lastTrxAbrev: openTran.abrev,
+          lastTrxNumber: openTran.trxNumber,
         });
 
         if (ct1.affected + ct2.affected !== 2)
@@ -106,6 +128,10 @@ export class OpenTransactionsService {
 
   async update(id: number, payload: UpdateTransactionDto) {
     const openTran = await this.openTransRepo.findOneBy({ id });
+    if (payload.trxKm < openTran.currentKm)
+      throw new UnprocessableEntityException(
+        `El km de la transacción no puede ser menor a ${openTran.currentKm}`,
+      );
     this.openTransRepo.merge(openTran, payload);
     return this.openTransRepo.save(openTran);
   }

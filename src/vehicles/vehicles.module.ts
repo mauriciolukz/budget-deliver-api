@@ -18,6 +18,9 @@ import { TransactionConfig } from './entities/trx-config.entity';
 import { OpenTransactionsService } from './services/open-transactions.service';
 import { TransactionsController } from './controllers/transactions.controller';
 import { TrxWheel } from './entities/trx-wheel.entity';
+import { Location } from 'src/locations/entities/location.entity';
+import { LocationsService } from 'src/locations/services/locations.service';
+import { LocationsController } from 'src/locations/controllers/locations.controller';
 
 @Module({
   imports: [
@@ -29,6 +32,7 @@ import { TrxWheel } from './entities/trx-wheel.entity';
       OpenTransaction,
       TransactionConfig,
       TrxWheel,
+      Location,
     ]),
   ],
   providers: [
@@ -37,6 +41,7 @@ import { TrxWheel } from './entities/trx-wheel.entity';
     VehicleItemsService,
     VehiclePhotosService,
     OpenTransactionsService,
+    LocationsService,
   ],
   controllers: [
     VehiclesController,
@@ -45,6 +50,7 @@ import { TrxWheel } from './entities/trx-wheel.entity';
     VehiclePhotosController,
     FuelLevelsController,
     TransactionsController,
+    LocationsController,
   ],
 })
 export class VehiclesModule {}
